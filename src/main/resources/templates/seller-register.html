@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Seller Registration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #signupbox {
+    border: 1px solid black;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin-bottom: 5px;
+    color: #333;
+  }
+  input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #555;
+  }
+  .message {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .message h3 {
+    color: #e74c3c;
+  }
+  .message h4 {
+    color: #2ecc71;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .footer a {
+   color:blue;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div id="signupbox">
+  <h1>Seller Registration</h1>
+  <div class="message">
+    <h3 th:text="${session.fail}"></h3>
+    <h4 th:text="${session.pass}"></h4>
+    <th:block th:text="${@myService.removeMessage()}"></th:block>
+  </div>
+  <form action="/seller-signup" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="mobile">Mobile:</label>
+    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Register</button>
+  </form>
+  <div class="footer">
+    <h2>Are you a Customer? <a href="/customer-signup">Click here </a></h2>
+  </div>
+</div>
+</body>
+</html>
